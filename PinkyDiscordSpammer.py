@@ -19,15 +19,50 @@ class colors:
     gray = fg('#8D8C8C')
 
 
+
+
+
+def opt():
+    logo = (f"""{colors.reset}
+                                [Methods]
+                                [1] Mass DM
+                                [2] Info                  
+    """)
+    return logo
+
+async def dmall():
+    for guild in client.guilds:
+        async for member in guild.fetch_members(limit=None):
+            message = input("Enter Message:     ")
+            try:
+                await member.send(message)
+                print(f"Sent {member.name} a DM.")
+            except:
+                print(f"Couldn't DM {member.name}.")
+        print("Sent all the server a DM.")
+
+def info():
+    print("Instagram : Pinkyhax\nA Mass DM Bot Script\nSends DM Messages to all users where the bot is on it!")
+
+
+def token():
+    new_func()
+
+def new_func():
+    asyncio.create_task(dmall())
+
+
 @client.event
 async def on_ready():
     print("Bot running with:")
     print("Username: ", client.user.name)
     print("User ID: ", client.user.id)
-    print("Options: [1] dmall")
+    print(opt())
     choice = input("")
     if choice == "1":
         token()
+    elif choice == "2":
+        info()
 
 def splash():
     logo = (f"""{colors.reset}
@@ -46,22 +81,6 @@ def splash():
                                                     Author: Pinkyhax                       
     """)
     return logo
-    
-async def dmall():
-    for guild in client.guilds:
-        async for member in guild.fetch_members(limit=None):
-            message = input("Enter Message:     ")
-            try:
-                await member.send(message)
-                print(f"Sent {member.name} a DM.")
-            except:
-                print(f"Couldn't DM {member.name}.")
-        print("Sent all the server a DM.")
-
-
-def token():
-    asyncio.create_task(dmall())
-
 
 print(splash())
 print("Works only For BOTS! Not for Selfbots.")
