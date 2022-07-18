@@ -1,13 +1,18 @@
-import sys, threading, discord, requests, ctypes, os, json
-from itertools import cycle
-from colored import fg, attr
-import time
-import datetime
-import random
-from threading import Thread
-import platform
-from discord.ext import commands
-import asyncio
+try:
+    import sys, threading, discord, requests, ctypes, os, json
+    from itertools import cycle
+    from colored import fg, attr
+    import time
+    import datetime
+    import random
+    from threading import Thread
+    import platform
+    from discord.ext import commands
+    import asyncio
+except:
+    print("[!] Missing Dependencies! Check Extensions Folder!")
+    input("Press Enter to continue...")
+    os.system("python System/main_menu.py")
 
 intents = discord.Intents(messages=True, members=True)
 client = commands.Bot(command_prefix=commands.when_mentioned_or('+'), intents=intents)
@@ -40,9 +45,18 @@ async def dmall():
             except:
                 print(f"Couldn't DM {member.name}.")
         print("Sent all the server a DM.")
+        input("Press Enter to continue...")
+        os.system("python System/main_menu.py")
 
 def info():
     print("Instagram : Pinkyhax\nA Mass DM Bot Script\nSends DM Messages to all users where the bot is on it!")
+    input("Press Enter to continue...")
+    opt()
+    choice = input("")
+    if choice == "1":
+        token()
+    elif choice == "2":
+        info()
 
 
 def token():
@@ -85,4 +99,9 @@ def splash():
 print(splash())
 print("Works only For BOTS! Not for Selfbots.")
 bot_token = input("Enter Bot Token:    ")
-client.run(bot_token)
+try:
+    client.run(bot_token)
+except Exception as e:
+    print(e)
+    input("Press Enter to continue...")
+    os.system("python System/main_menu.py")
