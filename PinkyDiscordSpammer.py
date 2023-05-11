@@ -28,12 +28,11 @@ class colors:
 
 
 def opt():
-    logo = (f"""{colors.reset}
+    return f"""{colors.reset}
                                 [Methods]
                                 [1] Mass DM
                                 [2] Info                  
-    """)
-    return logo
+    """
 
 async def dmall():
     for guild in client.guilds:
@@ -79,7 +78,7 @@ async def on_ready():
         info()
 
 def splash():
-    logo = (f"""{colors.reset}
+    return f"""{colors.reset}
                    
                     _____ _       _            _____  _                       _    _____                                           
                     |  __ (_)     | |          |  __ \(_)                     | |  / ____|                                          
@@ -93,8 +92,7 @@ def splash():
                                                             
                                                                       
                                                     Author: Pinkyhax                       
-    """)
-    return logo
+    """
 
 print(splash())
 print("Works only For BOTS! Not for Selfbots.")
